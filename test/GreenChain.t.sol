@@ -5,7 +5,6 @@ import "forge-std/Test.sol";
 import "../src/GreenChain.sol";
 
 contract ERC20Test is Test {
-
   event Transfer(address indexed from, address indexed to, uint256 value);
   event Approval(address indexed owner, address indexed spender, uint256 value);
 
@@ -16,7 +15,7 @@ contract ERC20Test is Test {
   address internal userTwo = vm.addr(3);
   address internal userThree = vm.addr(4);
   address internal userFour = vm.addr(5);
-  
+
   function setUp() public {
     vm.startPrank(owner);
     erc20 = new GreenChain(2000000000000000000000000);
@@ -69,13 +68,13 @@ contract ERC20Test is Test {
     assertEq(erc20.balanceOf(userFour), 0);
   }
 
-//   function testTransferToZeroAddress() public {
-//     vm.prank(userOne);
-//     vm.expectRevert();
-//     erc20.transfer(address(0), 1);
-//     assertEq(erc20.balanceOf(userOne), 1000);
-//     assertEq(erc20.balanceOf(address(0)), 0);
-//   }
+  //   function testTransferToZeroAddress() public {
+  //     vm.prank(userOne);
+  //     vm.expectRevert();
+  //     erc20.transfer(address(0), 1);
+  //     assertEq(erc20.balanceOf(userOne), 1000);
+  //     assertEq(erc20.balanceOf(address(0)), 0);
+  //   }
 
   function testApproveWithSuccess() public {
     vm.prank(userOne);
@@ -175,86 +174,85 @@ contract ERC20Test is Test {
     // assertEq(erc20.totalSupply(), 3000);
   }
 
-//   function testMintToWithNoAuthorization() public {
-//     vm.prank(userOne);
-//     vm.expectRevert(bytes("Ownable: caller is not the owner"));
-//     erc20.transfer(userThree, 1000);
-//     assertEq(erc20.balanceOf(userThree), 0);
-//     assertEq(erc20.totalSupply(), 2000);
-//   }
+  //   function testMintToWithNoAuthorization() public {
+  //     vm.prank(userOne);
+  //     vm.expectRevert(bytes("Ownable: caller is not the owner"));
+  //     erc20.transfer(userThree, 1000);
+  //     assertEq(erc20.balanceOf(userThree), 0);
+  //     assertEq(erc20.totalSupply(), 2000);
+  //   }
 
-//   function testMintToToZeroAddress() public {
-//     vm.prank(owner);
-//     vm.expectRevert(bytes("ERC20: to address is not valid"));
-//     erc20.mintTo(address(0), 1000);
-//     assertEq(erc20.balanceOf(address(0)), 0);
-//     assertEq(erc20.totalSupply(), 2000);
-//   }
+  //   function testMintToToZeroAddress() public {
+  //     vm.prank(owner);
+  //     vm.expectRevert(bytes("ERC20: to address is not valid"));
+  //     erc20.mintTo(address(0), 1000);
+  //     assertEq(erc20.balanceOf(address(0)), 0);
+  //     assertEq(erc20.totalSupply(), 2000);
+  //   }
 
-//   function testBurnWithSuccess() public {
-//     vm.prank(userOne);
-//     vm.expectEmit(true, true, true, true);
-//     emit Transfer(userOne, address(0), 1000);
-//     erc20.burn(1000);
-//     assertEq(erc20.balanceOf(userOne), 0);
-//     assertEq(erc20.totalSupply(), 1000);
-//   }
+  //   function testBurnWithSuccess() public {
+  //     vm.prank(userOne);
+  //     vm.expectEmit(true, true, true, true);
+  //     emit Transfer(userOne, address(0), 1000);
+  //     erc20.burn(1000);
+  //     assertEq(erc20.balanceOf(userOne), 0);
+  //     assertEq(erc20.totalSupply(), 1000);
+  //   }
 
-//   function testBurnWithZeroBalance() public {
-//     vm.prank(userThree);
-//     vm.expectRevert(bytes("ERC20: insufficient balance"));
-//     erc20.burn(1000);
-//     assertEq(erc20.balanceOf(userThree), 0);
-//   }
+  //   function testBurnWithZeroBalance() public {
+  //     vm.prank(userThree);
+  //     vm.expectRevert(bytes("ERC20: insufficient balance"));
+  //     erc20.burn(1000);
+  //     assertEq(erc20.balanceOf(userThree), 0);
+  //   }
 
-//   function testBurnWhenAmmountExceedsBalance() public {
-//     vm.prank(userOne);
-//     vm.expectRevert(bytes("ERC20: insufficient balance"));
-//     erc20.burn(999999);
-//     assertEq(erc20.balanceOf(userOne), 1000);
-//   }
+  //   function testBurnWhenAmmountExceedsBalance() public {
+  //     vm.prank(userOne);
+  //     vm.expectRevert(bytes("ERC20: insufficient balance"));
+  //     erc20.burn(999999);
+  //     assertEq(erc20.balanceOf(userOne), 1000);
+  //   }
 
-//   function testBurnFromWithSuccess() public {
-//     vm.prank(userOne);
-//     vm.expectEmit(true, true, true, true);
-//     emit Approval(userOne, userTwo, 500);
-//     erc20.approve(userTwo, 500);
-//     assertEq(erc20.allowance(userOne, userTwo), 500);
-//     vm.prank(userTwo);
-//     vm.expectEmit(true, true, true, true);
-//     emit Transfer(userOne, address(0), 500);
-//     erc20.burnFrom(userOne, 500);
-//     assertEq(erc20.allowance(userOne, userTwo), 0);
-//     assertEq(erc20.balanceOf(userOne), 500);
-//     assertEq(erc20.totalSupply(), 1500);
-//   }
+  //   function testBurnFromWithSuccess() public {
+  //     vm.prank(userOne);
+  //     vm.expectEmit(true, true, true, true);
+  //     emit Approval(userOne, userTwo, 500);
+  //     erc20.approve(userTwo, 500);
+  //     assertEq(erc20.allowance(userOne, userTwo), 500);
+  //     vm.prank(userTwo);
+  //     vm.expectEmit(true, true, true, true);
+  //     emit Transfer(userOne, address(0), 500);
+  //     erc20.burnFrom(userOne, 500);
+  //     assertEq(erc20.allowance(userOne, userTwo), 0);
+  //     assertEq(erc20.balanceOf(userOne), 500);
+  //     assertEq(erc20.totalSupply(), 1500);
+  //   }
 
-//   function testBurnFromInsufficientAllowance() public {
-//     vm.prank(userOne);
-//     vm.expectEmit(true, true, true, true);
-//     emit Approval(userOne, userTwo, 500);
-//     erc20.approve(userTwo, 500);
-//     assertEq(erc20.allowance(userOne, userTwo), 500);
-//     vm.prank(userTwo);
-//     vm.expectRevert(bytes("ERC20: insufficient balance"));
-//     erc20.burnFrom(userOne, 999999);
-//     assertEq(erc20.allowance(userOne, userTwo), 500);
-//     assertEq(erc20.balanceOf(userOne), 1000);
-//     assertEq(erc20.totalSupply(), 2000);
-//   }
+  //   function testBurnFromInsufficientAllowance() public {
+  //     vm.prank(userOne);
+  //     vm.expectEmit(true, true, true, true);
+  //     emit Approval(userOne, userTwo, 500);
+  //     erc20.approve(userTwo, 500);
+  //     assertEq(erc20.allowance(userOne, userTwo), 500);
+  //     vm.prank(userTwo);
+  //     vm.expectRevert(bytes("ERC20: insufficient balance"));
+  //     erc20.burnFrom(userOne, 999999);
+  //     assertEq(erc20.allowance(userOne, userTwo), 500);
+  //     assertEq(erc20.balanceOf(userOne), 1000);
+  //     assertEq(erc20.totalSupply(), 2000);
+  //   }
 
-//   function testBurnFromInsufficientBalance() public {
-//     vm.prank(userOne);
-//     vm.expectEmit(true, true, true, true);
-//     emit Approval(userOne, userTwo, 999999);
-//     erc20.approve(userTwo, 999999);
-//     assertEq(erc20.allowance(userOne, userTwo), 999999);
-//     vm.prank(userTwo);
-//     vm.expectRevert(bytes("ERC20: insufficient balance"));
-//     erc20.burnFrom(userOne, 999999);
-//     assertEq(erc20.allowance(userOne, userTwo), 999999);
-//     assertEq(erc20.balanceOf(userOne), 1000);
-//     assertEq(erc20.totalSupply(), 2000);
-//   }
-
+  //   function testBurnFromInsufficientBalance() public {
+  //     vm.prank(userOne);
+  //     vm.expectEmit(true, true, true, true);
+  //     emit Approval(userOne, userTwo, 999999);
+  //     erc20.approve(userTwo, 999999);
+  //     assertEq(erc20.allowance(userOne, userTwo), 999999);
+  //     vm.prank(userTwo);
+  //     vm.expectRevert(bytes("ERC20: insufficient balance"));
+  //     erc20.burnFrom(userOne, 999999);
+  //     assertEq(erc20.allowance(userOne, userTwo), 999999);
+  //     assertEq(erc20.balanceOf(userOne), 1000);
+  //     assertEq(erc20.totalSupply(), 2000);
+  //   }
 }
