@@ -10,8 +10,6 @@ on:
 
 env:
   FOUNDRY_PROFILE: ci
-  # ETH_RPC_URL:  ${{ secrets.ETH_RPC_URL }}
-  # ETHERSCAN_API: ${{ secrets.ETHERSCAN_API }}
 
 jobs:
   check:
