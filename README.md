@@ -2,6 +2,8 @@
 
 ### Standard ERC20 Token for Green Chain
 
+Deployed on Arbitrum at: [0xf518f2ebea5df8ca2b5e9c7996a2a25e8010014b](https://arbiscan.io/address/0xf518f2ebea5df8ca2b5e9c7996a2a25e8010014b)
+
 ## Development and testing
 
 Tests were built on Foundry.

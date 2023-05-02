@@ -5,11 +5,10 @@ import "forge-std/Script.sol";
 import { GreenChain } from "../src/GreenChain.sol";
 
 contract DeployScript is Script {
-  function setUp() public {
-    new GreenChain(2000000000000000000000000);
-  }
 
   function run() public {
-    vm.broadcast();
+    vm.startBroadcast();
+    new GreenChain(2000000000000000000000000);
+    vm.stopBroadcast();
   }
 }
